@@ -2,18 +2,21 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        Menu mainMenu = new Menu("Menu Principal", Arrays.asList("Cadastrar Cliente", "Listar Clientes", "Sair"));
+        Menu mainMenu = new Menu("Menu Principal", Arrays.asList("Abrir Conta", "Cadastrar Cliente", "Listar Clientes", "Sair"));
         boolean continuar = true;
         while (continuar) {
             int escolha = mainMenu.getSelection();
             switch (escolha) {
                 case 1:
-                    mainMenu.cadastrarCliente();
+                    mainMenu.abrirConta();
                     break;
                 case 2:
-                    mainMenu.listarClientes();
+                    mainMenu.cadastrarCliente();
                     break;
                 case 3:
+                    mainMenu.listarClientes();
+                    break;
+                case 4:
                     System.out.println("Fim");
                     continuar = false;
                     break;

@@ -6,6 +6,7 @@ public class Menu {
     private String title;
     private List<String> options;
     private List<Cliente> clientes = new ArrayList<>();
+    private List<Conta> contas = new ArrayList<>();
 
     public Menu(String title, List<String> options) {
         this.title = title;
@@ -50,6 +51,29 @@ public class Menu {
     public void listarClientes() {
         for (Cliente cliente : clientes) {
             System.out.println(cliente);
+        }
+    }
+
+    private boolean verificarContaExistente(int numeroConta) {
+        for (Conta conta : contas) {
+            if (conta.getNumeroConta() == numeroConta) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void abrirConta() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Digite o número da conta que deseja criar:");
+        int numeroConta = scanner.nextInt();
+
+        if (verificarContaExistente(numeroConta)) {
+            System.out.println("Uma conta com esse número já existe.");
+        } else {
+            Conta novaConta = new Conta(numeroConta);
+            contas.add(novaConta);
+            System.out.println("Conta criada com sucesso! " + novaConta);
         }
     }
 }
