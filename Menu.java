@@ -134,4 +134,42 @@ public class Menu {
         }
     }
 
+    public void depositarEmMoedaEstrangeira() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Digite o número da conta para depósito:");
+        int numeroConta = scanner.nextInt();
+        scanner.nextLine(); // Consume the newline left-over
+        System.out.println("Digite o valor a ser depositado:");
+        double valor = scanner.nextDouble();
+        scanner.nextLine(); // Consume the newline left-over
+        System.out.println("Digite a moeda estrangeira (ex: USD, EUR):");
+        String moeda = scanner.nextLine();
+
+        double taxaCambio = obterTaxaCambio(moeda, "BRL"); // Você precisaria implementar esse método
+        double valorEmReais = valor * taxaCambio;
+
+        for (Conta conta : contas) {
+            if (conta.getNumeroConta() == numeroConta) {
+                conta.depositar(valorEmReais);
+                System.out.println("Depósito de " + valor + " " + moeda + " realizado com sucesso na conta "
+                        + numeroConta + " convertido para R$" + valorEmReais);
+                return;
+            }
+        }
+        System.out.println("Conta não encontrada.");
+    }
+
+    private double obterTaxaCambio(String moedaOrigem, String moedaDestino) {
+        // Este método é um placeholder. Você precisaria obter essa informação de uma
+        // API de câmbio confiável.
+        switch (moedaOrigem) {
+            case "USD":
+                return 5.20; // Taxa de câmbio fictícia
+            case "EUR":
+                return 5.80; // Taxa de câmbio fictícia
+            default:
+                return 1.0;
+        }
+    }
+
 }
