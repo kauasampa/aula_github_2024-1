@@ -53,6 +53,21 @@ public class Menu {
         System.out.println("Conta não encontrada.");
     }
 
+    public void exibirSaldo() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Digite o número da conta para verificar o saldo:");
+        int numeroConta = scanner.nextInt();
+        scanner.nextLine(); // Consume the newline left-over
+
+        for (Conta conta : contas) {
+            if (conta.getNumeroConta() == numeroConta) {
+                System.out.println("Saldo atual: R$" + conta.getSaldo());
+                return;
+            }
+        }
+        System.out.println("Conta não encontrada.");
+    }
+
     public void cadastrarCliente() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Digite o nome do cliente:");
