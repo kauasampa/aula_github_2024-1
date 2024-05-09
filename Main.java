@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
 
         Menu mainMenu = new Menu("Menu Principal", Arrays.asList("Abrir Conta", "Cadastrar Cliente", "Listar Clientes",
-                "Depositar em Conta", "Exibir saldo", "Remover conta", "Depósito em moeda estrangeira", "Sacar de Conta","Sair"));
+                "Depositar em Conta", "Exibir saldo", "Remover conta", "Depósito em moeda estrangeira", "Sacar de Conta","Remover Cliente", "Sair"));
         boolean continuar = true;
         while (continuar) {
             int escolha = mainMenu.getSelection();
@@ -44,9 +44,13 @@ public class Main {
                     mainMenu.sacarDeConta();
 
                 case 9:
-                    System.out.println("Fim");
-                    continuar = false;
+                    mainMenu.removerCliente();
                     break;
+                   
+                case 10: 
+                 System.out.println("Fim");
+                 continuar = false;
+                 break;
                 default:
                     System.out.println("Opção inválida.");
                     break;
