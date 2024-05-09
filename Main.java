@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
 
         Menu mainMenu = new Menu("Menu Principal", Arrays.asList("Abrir Conta", "Cadastrar Cliente", "Listar Clientes",
-                "Depositar em Conta", "Exibir saldo", "Remover conta", "Depósito em moeda estrangeira", "Sair"));
+                "Depositar em Conta", "Exibir saldo", "Remover conta", "Depósito em moeda estrangeira", "Sacar de Conta","Sair"));
         boolean continuar = true;
         while (continuar) {
             int escolha = mainMenu.getSelection();
@@ -37,10 +37,13 @@ public class Main {
                     break;
 
                 case 7:
-                    mainMenu.depositarEmMoedaEstrangeira(); // Nova funcionalidade
+                    mainMenu.depositarEmMoedaEstrangeira();
                     break;
 
                 case 8:
+                    mainMenu.sacarDeConta();
+
+                case 9:
                     System.out.println("Fim");
                     continuar = false;
                     break;
