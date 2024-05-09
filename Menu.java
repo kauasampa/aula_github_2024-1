@@ -109,4 +109,29 @@ public class Menu {
             System.out.println("Conta criada com sucesso! " + novaConta);
         }
     }
+
+    public void removerConta() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Digite o número da conta a ser removida:");
+        int numeroConta = scanner.nextInt();
+        Conta contaParaRemover = null;
+        for (Conta conta : contas) {
+            if (conta.getNumeroConta() == numeroConta) {
+                if (conta.getSaldo() == 0) {
+                    contaParaRemover = conta;
+                    break;
+                } else {
+                    System.out.println("A conta ainda possui saldo. Não é possível remover.");
+                    return;
+                }
+            }
+        }
+        if (contaParaRemover != null) {
+            contas.remove(contaParaRemover);
+            System.out.println("Conta removida com sucesso.");
+        } else {
+            System.out.println("Conta não encontrada.");
+        }
+    }
+
 }
