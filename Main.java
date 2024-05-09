@@ -3,7 +3,7 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
        
-        Menu mainMenu = new Menu("Menu Principal", Arrays.asList("Abrir Conta", "Cadastrar Cliente", "Listar Clientes", "Depositar em Conta", "Sair"));
+        Menu mainMenu = new Menu("Menu Principal", Arrays.asList("Abrir Conta", "Cadastrar Cliente", "Listar Clientes", "Depositar em Conta","Exibir saldo", "Sair"));
         boolean continuar = true;
         while (continuar) {
             int escolha = mainMenu.getSelection();
@@ -24,7 +24,13 @@ public class Main {
                     
                     mainMenu.depositarEmConta();  
                     break;
+
                 case 5:
+                    
+                    mainMenu.exibirSaldo();  
+                    break;
+                
+                case 6:
                    
                     System.out.println("Fim");
                     continuar = false;
