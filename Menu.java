@@ -35,6 +35,24 @@ public class Menu {
         return op;
     }
 
+    public void depositarEmConta() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Digite o número da conta para depósito:");
+        int numeroConta = scanner.nextInt();
+        scanner.nextLine(); // Consume the newline left-over
+        System.out.println("Digite o valor a ser depositado:");
+        double valor = scanner.nextDouble();
+        scanner.nextLine(); // Consume the newline left-over
+
+        for (Conta conta : contas) {
+            if (conta.getNumeroConta() == numeroConta) {
+                conta.depositar(valor);
+                return;
+            }
+        }
+        System.out.println("Conta não encontrada.");
+    }
+
     public void cadastrarCliente() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Digite o nome do cliente:");

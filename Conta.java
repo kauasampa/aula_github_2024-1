@@ -4,7 +4,7 @@ public class Conta {
 
     public Conta(int numeroConta) {
         this.numeroConta = numeroConta;
-        this.saldo = 0.0;
+        this.saldo = 0.0;  
     }
 
     public int getNumeroConta() {
@@ -13,6 +13,17 @@ public class Conta {
 
     public double getSaldo() {
         return saldo;
+    }
+
+
+    public void depositar(double valor) {
+        if (valor > 0) {
+            saldo += valor;  
+            System.out.println("Depósito de R$" + valor + " realizado com sucesso. Saldo atual: R$" + saldo);
+        } else {
+    
+            System.out.println("Valor de depósito inválido. Por favor, insira um valor positivo.");
+        }
     }
 
     @Override
