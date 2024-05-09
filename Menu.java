@@ -39,10 +39,10 @@ public class Menu {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Digite o número da conta para depósito:");
         int numeroConta = scanner.nextInt();
-        scanner.nextLine(); // Consume the newline left-over
+        scanner.nextLine(); 
         System.out.println("Digite o valor a ser depositado:");
         double valor = scanner.nextDouble();
-        scanner.nextLine(); // Consume the newline left-over
+        scanner.nextLine(); 
 
         for (Conta conta : contas) {
             if (conta.getNumeroConta() == numeroConta) {
@@ -57,10 +57,10 @@ public class Menu {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Digite o número da conta para saque:");
         int numeroConta = scanner.nextInt();
-        scanner.nextLine(); // Consume the newline left-over
+        scanner.nextLine(); 
         System.out.println("Digite o valor a ser sacado:");
         double valor = scanner.nextDouble();
-        scanner.nextLine(); // Consume the newline left-over
+        scanner.nextLine(); 
     
         for (Conta conta : contas) {
             if (conta.getNumeroConta() == numeroConta) {
@@ -80,8 +80,7 @@ public class Menu {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Digite o número da conta para verificar o saldo:");
         int numeroConta = scanner.nextInt();
-        scanner.nextLine(); // Consume the newline left-over
-
+        scanner.nextLine(); 
         for (Conta conta : contas) {
             if (conta.getNumeroConta() == numeroConta) {
                 System.out.println("Saldo atual: R$" + conta.getSaldo());
@@ -161,14 +160,14 @@ public class Menu {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Digite o número da conta para depósito:");
         int numeroConta = scanner.nextInt();
-        scanner.nextLine(); // Consume the newline left-over
+        scanner.nextLine(); 
         System.out.println("Digite o valor a ser depositado:");
         double valor = scanner.nextDouble();
-        scanner.nextLine(); // Consume the newline left-over
+        scanner.nextLine(); 
         System.out.println("Digite a moeda estrangeira (ex: USD, EUR):");
         String moeda = scanner.nextLine();
 
-        double taxaCambio = obterTaxaCambio(moeda, "BRL"); // Você precisaria implementar esse método
+        double taxaCambio = obterTaxaCambio(moeda, "BRL"); 
         double valorEmReais = valor * taxaCambio;
 
         for (Conta conta : contas) {
@@ -183,16 +182,38 @@ public class Menu {
     }
 
     private double obterTaxaCambio(String moedaOrigem, String moedaDestino) {
-        // Este método é um placeholder. Você precisaria obter essa informação de uma
-        // API de câmbio confiável.
+        
+        
         switch (moedaOrigem) {
             case "USD":
-                return 5.20; // Taxa de câmbio fictícia
+                return 5.20; 
             case "EUR":
-                return 5.80; // Taxa de câmbio fictícia
+                return 5.80; 
             default:
                 return 1.0;
         }
     }
 
+    public void removerCliente() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Digite o email do cliente a ser removido:");
+        String email = scanner.nextLine();
+    
+        Cliente clienteParaRemover = null;
+        for (Cliente cliente : clientes) {
+            if (cliente.getEmail().equals(email)) {
+                clienteParaRemover = cliente;
+                break;
+            }
+        }
+    
+        if (clienteParaRemover != null) {
+            clientes.remove(clienteParaRemover);
+            System.out.println("Cliente removido com sucesso.");
+        } else {
+            System.out.println("Cliente não encontrado.");
+        }
+    }
+
 }
+
