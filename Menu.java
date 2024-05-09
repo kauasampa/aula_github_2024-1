@@ -53,6 +53,29 @@ public class Menu {
         System.out.println("Conta não encontrada.");
     }
 
+    public void sacarDeConta() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Digite o número da conta para saque:");
+        int numeroConta = scanner.nextInt();
+        scanner.nextLine(); // Consume the newline left-over
+        System.out.println("Digite o valor a ser sacado:");
+        double valor = scanner.nextDouble();
+        scanner.nextLine(); // Consume the newline left-over
+    
+        for (Conta conta : contas) {
+            if (conta.getNumeroConta() == numeroConta) {
+                if (conta.getSaldo() >= valor) {
+                    conta.sacar(valor);
+                    System.out.println("Saque de R$" + valor + " realizado com sucesso.");
+                } else {
+                    System.out.println("Saldo insuficiente.");
+                }
+                return;
+            }
+        }
+        System.out.println("Conta não encontrada.");
+    }
+
     public void exibirSaldo() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Digite o número da conta para verificar o saldo:");
